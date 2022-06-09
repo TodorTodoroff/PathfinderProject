@@ -25,6 +25,10 @@ public class Route {
 
     private String name;
 
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String description;
+
     @ManyToOne
     private User author;
 
@@ -34,8 +38,8 @@ public class Route {
     @OneToMany(targetEntity = Comment.class, mappedBy = "route", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
-    @OneToOne
-    private Picture header;
+    @OneToMany(mappedBy = "route", targetEntity = Picture.class)
+    private Set<Picture> pictures;
 
 
     @ManyToMany
@@ -43,6 +47,7 @@ public class Route {
 
     public Route() {
         this.comments = new HashSet<>();
+        this.categories = new HashSet<>();
     }
 
     public long getId() {
@@ -93,12 +98,12 @@ public class Route {
         this.videoUrl = videoUrl;
     }
 
-    public Picture getHeader() {
-        return header;
+    public Set<Picture> getHeaders() {
+        return pictures;
     }
 
-    public void setHeader(Picture header) {
-        this.header = header;
+    public void setHeaders(Set<Picture> header) {
+        this.pictures = header;
     }
 
     public Set<Category> getCategories() {
@@ -109,6 +114,21 @@ public class Route {
         this.categories = categories;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
+    }
 
     @Override
     public boolean equals(Object o) {

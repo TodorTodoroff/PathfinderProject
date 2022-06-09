@@ -18,7 +18,7 @@ public class User {
 
     private int age;
 
-    @Column(name = "fullname")
+    @Column(name = "full_name")
     private String fullName;
 
     public int getAge() {
@@ -43,7 +43,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)

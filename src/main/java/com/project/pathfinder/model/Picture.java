@@ -21,7 +21,7 @@ public class Picture {
     private User author;
 
 
-    @OneToOne(mappedBy = "header")
+    @ManyToOne
     private Route route;
 
 

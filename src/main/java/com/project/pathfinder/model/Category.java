@@ -13,14 +13,17 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private CategoryTypeEnum name;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Column(nullable = false, unique = true)
+    @Enumerated(EnumType.STRING)
+    private CategoryTypeEnum name;
 
 
-    public Category(){}
+
+    public Category() {
+    }
 
     public long getId() {
         return id;
