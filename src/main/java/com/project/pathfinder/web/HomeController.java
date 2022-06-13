@@ -21,12 +21,14 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-
         List<Route> routes = routeService.getMostCommented();
-
         model.addAttribute("mostCommented", routes.get(0));
-
         return "index";
+    }
+
+    @GetMapping("/about")
+    public String about(){
+        return "about";
     }
 
 }
