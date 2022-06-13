@@ -1,16 +1,32 @@
 package com.project.pathfinder.model.dto;
 
+
+import javax.validation.constraints.*;
+
 public class UserRegisterDto {
+
+    @NotNull
+    @Size(min = 5, max = 20)
     private String username;
 
+    @NotNull
+    @Size(min = 5, max = 20)
     private String fullname;
 
+    @NotNull
+    @Email
     private String email;
 
+    @Min(0)
+    @Max(90)
     private int age;
 
+    @NotNull
+    @Size(min = 5, max = 20)
     private String password;
 
+    @NotNull
+    @Size(min = 5, max = 20)
     private String confirmPassword;
 
 
