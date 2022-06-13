@@ -52,8 +52,19 @@ public class User {
     @Enumerated(EnumType.STRING)
     private DifficultyLevelEnum level;
 
+
+
     public User() {
         this.roles = new HashSet<>();
+    }
+
+    public User(int age, String fullName, String username, String password, String email) {
+        this();
+        this.age = age;
+        this.fullName = fullName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
     }
 
     public long getId() {

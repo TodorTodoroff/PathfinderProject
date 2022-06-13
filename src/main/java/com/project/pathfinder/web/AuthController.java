@@ -2,8 +2,8 @@ package com.project.pathfinder.web;
 
 
 import com.project.pathfinder.model.dto.UserRegisterDto;
+import com.project.pathfinder.service.AuthService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +15,11 @@ import javax.validation.Valid;
 @Controller
 public class AuthController {
 
+private AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
     @ModelAttribute("userRegisterDto")
     public UserRegisterDto initForm(){
@@ -40,6 +45,7 @@ public class AuthController {
             return "redirect:/register";
         }
 
+        this.authService.register(userRegisterDto);
 
         return "redirect:/login";
     }
